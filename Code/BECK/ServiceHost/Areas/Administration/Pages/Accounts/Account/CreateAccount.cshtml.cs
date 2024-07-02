@@ -1,6 +1,5 @@
 using AccountManagement.Application.Contract.Account;
 using AccountManagement.Application.Contract.Role;
-using Azure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
