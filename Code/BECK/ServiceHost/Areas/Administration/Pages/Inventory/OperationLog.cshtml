@@ -1,0 +1,51 @@
+﻿@page
+@model ServiceHost.Areas.Administration.Pages.Inventory.OperationLogModel
+@{
+}
+<a class="btn btn-danger" asp-page="Index">بازگشت</a>
+<div class="card shadow">
+	<div class="card-header">
+		<h2 class="mb-0">انبار محصولات</h2>
+	</div>
+	<div class="card-body">
+		<div class="table-responsive">
+			<table id="example"
+				   class="table table-striped table-bordered w-100 text-nowrap">
+				<thead>
+					<tr>
+						<th class="wd-15p">#</th>
+						<th class="wd-15p">تعداد</th>
+						<th class="wd-20p">تاریخ</th>
+						<th class="wd-20p">عملیات</th>
+						<th class="wd-20p">موجودی فعلی</th>
+						<th class="wd-20p">عملگر</th>
+						<th class="wd-20p">توضیحات</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var item in Model.InventoryOperation)
+					{
+						<tr class="@(item.Operation?"bg-success":"bg-danger")">
+							<td>@item.Id</td>
+							<td>@item.Count</td>
+							<td>@item.OperationDate</td>
+							<td>
+								@if (item.Operation)
+								{
+									<span>افزایش</span>
+								}
+								else
+								{
+									<span>کاهش</span>
+								}
+							</td>
+							<td>@item.CurrentCount</td>
+							<td>@item.OperatorName</td>
+							<td>@item.Description</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

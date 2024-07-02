@@ -1,0 +1,83 @@
+﻿@page
+@model ServiceHost.Areas.Administration.Pages.Shop.ProductCategory.CreateProductCategoryModel
+@{
+	string message = Model.Message;
+	ViewData["AdmintTitle"] = "ایجاد دسته بندی";
+}
+<div>
+	@if (!string.IsNullOrWhiteSpace(message))
+	{
+		<p class="bg-danger text-dark mx-auto text-center p-4">@message</p>
+	}
+</div>
+<form asp-action="post"
+	enctype="multipart/form-data">
+	<div class="card shadow">
+		<div class="card-header">
+			<h2 class="mb-0">ایجاد دسته بندی</h2>
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">نام دسته بندی</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="CreateProductCategory.Name">
+							   <span class="text-danger" asp-validation-for="CreateProductCategory.Name"></span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">Slug</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="CreateProductCategory.Slug">
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">عکس</label>
+						<input type="file" accept="image/*" class="form-control is-valid state-valid"
+							   asp-for="CreateProductCategory.Picture">
+						<span class="text-danger" asp-validation-for="CreateProductCategory.Picture"></span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">توضیح متا</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="CreateProductCategory.MetaDescription">
+						<span class="text-danger" asp-validation-for="CreateProductCategory.MetaDescription"></span>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label class="form-label">PictureAlt</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="CreateProductCategory.PictureAlt">
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label class="form-label">PictureTitle</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="CreateProductCategory.PictureTitle">
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label class="form-label">کلمات کلیدی</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="CreateProductCategory.Keywords">
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="form-group">
+						<label class="form-label">توضیحات</label>
+						<textarea class="form-control" asp-for="CreateProductCategory.Description"rows="4"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<input type="submit" class="btn btn-success" value="ایجاد" />
+</form>

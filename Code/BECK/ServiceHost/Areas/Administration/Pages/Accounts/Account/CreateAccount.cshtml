@@ -1,0 +1,65 @@
+﻿@page
+@model Areas.Administration.Pages.Accounts.Account.CreateAccountModel
+@{
+	string message = Model.Message;
+}
+<div>
+	@if (!string.IsNullOrWhiteSpace(message))
+	{
+		<p class="bg-danger text-dark mx-auto text-center p-4">@message</p>
+	}
+</div>
+<form asp-action="post"
+	  enctype="multipart/form-data">
+	<div class="card shadow">
+		<div class="card-header">
+			<h2 class="mb-0">افزودن دسته جدید</h2>
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">نام کامل</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="Account.FullName">
+						<span class="text-danger" asp-validation-for="Account.FullName"></span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">نام کاربری</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="Account.UserName">
+						<span class="text-danger" asp-validation-for="Account.UserName"></span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">کلمه عبور</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="Account.Password">
+						<span class="text-danger" asp-validation-for="Account.Password"></span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">شماره موبایل</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="Account.Mobile">
+						<span class="text-danger" asp-validation-for="Account.Mobile"></span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">نقش</label>
+						<select class="form-control select2 w-100" asp-for="Account.RoleId" asp-items="@Model.Roles">
+
+						</select>
+						<span class="text-danger" asp-validation-for="Account.RoleId"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<input type="submit" class="btn btn-success" value="ایجاد" />
+</form>

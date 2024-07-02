@@ -1,0 +1,113 @@
+﻿@page
+@model ServiceHost.Areas.Administration.Pages.Blog.Article.CreateArticleModel
+@{
+	string message = Model.Message;
+}
+<div>
+	@if (!string.IsNullOrWhiteSpace(message))
+	{
+		<p class="bg-danger text-dark mx-auto text-center p-4">@message</p>
+	}
+</div>
+<form asp-action="post"
+	  enctype="multipart/form-data">
+	<div class="card shadow">
+		<div class="card-header">
+			<h2 class="mb-0">افزودن دسته جدید</h2>
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">نام دسته بندی</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="CreateArticle.Title">
+						<span class="text-danger" asp-validation-for="CreateArticle.Title"></span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">slug</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="CreateArticle.Slug">
+						<span class="text-danger" asp-validation-for="CreateArticle.Slug"></span>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="form-label">عکس</label>
+						<input type="file" accept="image/*" class="form-control is-valid state-valid"
+							   asp-for="CreateArticle.Picture">
+						<span class="text-danger" asp-validation-for="CreateArticle.Picture"></span>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="form-label">PictureAlt</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="CreateArticle.PictureAlt">
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="form-label">PictureTitle</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="CreateArticle.PictureTitle">
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="form-label">کلمات کلیدی</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="CreateArticle.Keywords">
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">توضیحات کوتاه</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="CreateArticle.ShortDescription">
+						<span class="text-danger" asp-validation-for="CreateArticle.ShortDescription"></span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">توضیحات meta</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="CreateArticle.MetaDescription">
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">آدرس Canonical</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="CreateArticle.CanonicalAddress">
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">دسته بندی محصول</label>
+						<select class="form-control is-valid state-valid select2" asp-for="CreateArticle.CategoryId" asp-items="@Model.CategoryId">
+
+						</select>
+						<span class="text-danger" asp-validation-for="CreateArticle.CategoryId"></span>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="form-group">
+						
+						<label class="form-label">توضیحات</label>
+						<textarea class="form-control" asp-for="CreateArticle.Description" id="Description"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<input type="submit" class="btn btn-success" value="ایجاد" />
+</form>
+@section Scripts {
+	<script src="~/ckeditor/ckeditor.js"></script>
+	<script>
+		CKEDITOR.replace("Description");
+	</script>
+}

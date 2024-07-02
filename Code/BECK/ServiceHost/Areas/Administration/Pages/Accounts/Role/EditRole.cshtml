@@ -1,0 +1,48 @@
+﻿@page
+@model ServiceHost.Areas.Administration.Pages.Accounts.Role.EditRoleModel
+@{
+	string message = Model.Message;
+}
+<div>
+	@if (!string.IsNullOrWhiteSpace(message))
+	{
+		<p class="bg-danger text-dark mx-auto text-center p-4">@message</p>
+	}
+</div>
+<form asp-action="post"
+	  enctype="multipart/form-data">
+	<div class="card shadow">
+		<div class="card-header">
+			<h2 class="mb-0">افزودن دسته جدید</h2>
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">نام کامل</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="EditRole.Name">
+						<span class="text-danger" asp-validation-for="EditRole.Name"></span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group ">
+						<label>دسترسی های نقش</label>
+						<select asp-for="EditRole.Permission" asp-items="Model.Permissions" class="form-control select2 w-100" multiple="multiple"
+								data-placeholder="یک یا چند مورد را انتخاب کنید">
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<input type="hidden" asp-for="EditRole.Id" value="@Model.EditRole.Id" />
+	<input type="submit" class="btn btn-success" value="ویرایش" />
+</form>
+@section Styles {
+	<link rel="stylesheet" href="~/assets/plugins/select2/select2.css">
+}
+@section Scripts {
+	<script src="~/assets/js/select2.js"></script>
+	<script src="~/assets/plugins/select2/select2.full.js"></script>
+}

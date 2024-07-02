@@ -1,0 +1,78 @@
+﻿@model List<_01_BECKQuery.Contract.ProductCategory.ProductCategoryQueryModel>
+<section class="product-tab-area mb--30 mb-md--10">
+    <div class="container">
+        <div class="row mb--28 mb-md--18 mb-sm--33">
+            <div class="col-md-3 text-md-start text-center">
+                <h2>همه محصولات</h2>
+            </div>
+            <div class="col-md-9">
+                <div class="tab-style-1">
+                    <div class="nav nav-tabs justify-content-md-end justify-content-center" id="product-tab"
+                         role="tablist">
+                        @foreach(var category in Model)
+                        {
+                            <button type="button" class="nav-item nav-link @((Model.First()==category)?"active":"")" id="new-@category.Id-tab"
+                                    data-bs-toggle="tab" data-bs-target="#new-@category.Id" role="tab"
+                                    aria-controls="new-@category.Id" aria-selected="false">
+                                <span class="nav-text">@category.Name</span>
+                            </button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="tab-content" id="product-tab-content">
+                    @foreach(var category in Model)
+                    {
+                        <div class="tab-pane fade @((Model.First()==category)?"active":"")" id="new-@category.Id" role="tabpanel"
+                             aria-labelledby="new-@category.Id-tab">
+                            <div class="row">
+                                @foreach(var product in category.Products)
+                                {
+                                    <div class="col-lg-3 col-sm-6 mb--45">
+                                        <div class="ft-product HTfadeInUp">
+                                            <div class="product-inner">
+                                                <div class="product-image">
+                                                    <figure class="product-image--holder">
+                                                        <img src="~/Pictures/@product.Picture"
+                                                             alt="@product.PictureAlt" title="@product.PictureTitle">
+                                                    </figure>
+                                                    <a asp-page="Product" asp-route-slug="@product.Slug" class="product-overlay"></a>
+                                                </div>
+                                                <div class="product-info">
+                                                    <div class="product-category">
+                                                        <a asp-page="ProductCategory" asp-route-slug="@category.Slug">دسته: @product.CategoryName</a>
+                                                    </div>
+                                                    <h3 class="product-title">
+                                                        <a asp-page="Product" asp-route-slug="@product.Slug">
+                                                            @product.Name
+                                                        </a>
+                                                    </h3>
+                                                    <div class="product-info-bottom">
+                                                        <div class="product-price-wrapper">
+                                                            @if (product.HasDiscount)
+                                                            {
+                                                                <span class="money text-muted" style="text-decoration-line: line-through; ">@product.UnitPrice تومان</span>
+                                                                <span class="money">@product.PriceWithDiscount تومان</span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span class="money">@product.UnitPrice تومان</span>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

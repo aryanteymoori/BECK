@@ -1,0 +1,57 @@
+﻿@page
+@model ServiceHost.Pages.ArticleCategoriesModel
+@{
+    ViewData["Title"] = Model.ArticleCategory.Name;
+    ViewData["metaDescription"] = Model.ArticleCategory.MetaDescription;
+    ViewData["Keywords"] = Model.ArticleCategory.Keywords;
+}
+<section class="page-title-area bg-image ptb--80" data-bg-image="Them/files/img/bg/page_title_bg.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="page-title">@Model.ArticleCategory.Name</h1>
+                <ul class="breadcrumb">
+                    <li class="current"><span>@Model.ArticleCategory.Name</span></li>
+                    <li><a asp-page="Index" style="margin-right: 10px;">صفحه اصلی</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb area End -->
+<!-- Main Content Wrapper Start -->
+<main class="main-content-wrapper">
+    <div class="inner-page-content ptb--80 ptb-md--60">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        @foreach (var item in Model.ArticleCategory.Articles)
+                        {
+                            <div class="col-xl-4 col-lg-6 mb--50">
+                                <article class="blog format-standard">
+                                    <div class="blog__inner">
+                                        <div class="blog__media">
+                                            <figure class="image">
+                                                <img src="~/Pictures/@item.Picture" class="w-100">
+                                                <a asp-page="Article" asp-route-slug="@item.Slug" class="item-overlay"></a>
+                                            </figure>
+                                        </div>
+                                        <div class="blog__info">
+                                            <h1 style="font-weight:bold;">@item.Title</h1>
+                                            <h2 class="blog__title">دسته بندی: <a asp-page="ArticleCategory" asp-route-slug="@item.CategorySlug">@Model.ArticleCategory.Name</a></h2>
+                                            <div class="blog__desc">
+                                                <p>@item.ShortDescription</p>
+                                            </div>
+                                            <a asp-page="Article" asp-route-slug="@item.Slug" class="read-more-btn">ادامه مطلب</a>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

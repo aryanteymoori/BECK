@@ -1,0 +1,57 @@
+﻿@page
+@model ServiceHost.Areas.Administration.Pages.Shop.ProductPicture.CreateProductPictureModel
+@{
+	string message = Model.Message;
+	ViewData["AdmintTitle"] = "ایجاد عکس محصول";
+}
+<div>
+	@if (!string.IsNullOrWhiteSpace(message))
+	{
+		<p class="bg-danger text-dark mx-auto text-center p-4">@message</p>
+	}
+</div>
+<form asp-action="post"
+	enctype="multipart/form-data">
+	<div class="card shadow">
+		<div class="card-header">
+			<h2 class="mb-0">افزودن عکس محصول جدید</h2>
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">عکس</label>
+						<input type="file" accept="image/*" class="form-control is-valid state-valid"
+							   asp-for="CreateProductPicture.Picture">
+							   <span class="text-danger" asp-validation-for="CreateProductPicture.Picture"></span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">PictureAlt</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="CreateProductPicture.PictureAlt">
+						<span class="text-danger" asp-validation-for="CreateProductPicture.PictureAlt"></span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">PictureTitle</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="CreateProductPicture.PictureTitle">
+						<span class="text-danger" asp-validation-for="CreateProductPicture.PictureTitle"></span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">محصول</label>
+						<select class="form-control select2 w-100" asp-items="@Model.Products" asp-for="CreateProductPicture.ProductId">
+						</select>
+						<span class="text-danger" asp-validation-for="CreateProductPicture.ProductId"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<input type="submit" class="btn btn-success" value="ایجاد" />
+</form>

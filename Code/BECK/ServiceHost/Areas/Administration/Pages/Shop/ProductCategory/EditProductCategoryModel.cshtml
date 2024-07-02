@@ -1,0 +1,84 @@
+﻿@page
+@model ServiceHost.Areas.Administration.Pages.Shop.ProductCategory.EditProductCategoryModelModel
+@{
+	string message = Model.Message;
+	ViewData["AdmintTitle"] = "ویرایش دسته";
+}
+<div>
+	@if (!string.IsNullOrWhiteSpace(message))
+	{
+		<p class="bg-danger text-dark mx-auto text-center">@message</p>
+	}
+</div>
+<form asp-action="post"
+	enctype="multipart/form-data">
+	<div class="card shadow">
+		<div class="card-header">
+			<h2 class="mb-0">ویرایش دسته: @Model.EditProductCategory.Name</h2>
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">نام دسته بندی</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="EditProductCategory.Name">
+						<span class="text-danger" asp-validation-for="EditProductCategory.Name"></span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">Slug</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="EditProductCategory.Slug">
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">عکس</label>
+						<input type="file" accept="image/*" class="form-control is-valid state-valid"
+							   asp-for="EditProductCategory.Picture">
+						<span class="text-danger" asp-validation-for="EditProductCategory.Picture"></span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">توضیح متا</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="EditProductCategory.MetaDescription">
+						<span class="text-danger" asp-validation-for="EditProductCategory.MetaDescription"></span>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label class="form-label">PictureAlt</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="EditProductCategory.PictureAlt">
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label class="form-label">PictureTitle</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="EditProductCategory.PictureTitle">
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label class="form-label">کلمات کلیدی</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="EditProductCategory.Keywords">
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="form-group">
+						<label class="form-label">توضیحات</label>
+						<textarea class="form-control" asp-for="EditProductCategory.Description" rows="4"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<input type="hidden" asp-for="EditProductCategory.Id" value="@Model.EditProductCategory.Id" />
+	<input type="submit" class="btn btn-success" value="ویرایش" />
+</form>

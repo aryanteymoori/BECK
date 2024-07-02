@@ -1,0 +1,75 @@
+﻿@page
+@using InventoryManagement.Configuration.Permissions
+@model ServiceHost.Areas.Administration.Pages.Inventory.IndexModel
+@{
+}
+<a Permission="@InventoryPermissions.CreateInventory" class="btn btn-success" asp-page="CreateInventory">ایجاد انبار جدید</a>
+<div class="card shadow">
+	<div class="card-header">
+		<h2 class="mb-0">انبار محصولات</h2>
+	</div>
+	<div class="card-body">
+		<div class="table-responsive">
+			<table id="example"
+				   class="table table-striped table-bordered w-100 text-nowrap">
+				<thead>
+					<tr>
+						<th class="wd-15p">#</th>
+						<th class="wd-15p">نام محصول</th>
+						<th class="wd-20p">قیمت واحد</th>
+						<th class="wd-20p">موجودی انبار</th>
+						<th class="wd-20p">تاریخ ایجاد</th>
+						<th class="wd-20p">عملیات</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var item in Model.Inventory)
+					{
+						<tr>
+							<td>@item.Id</td>
+							<td>@item.ProductName</td>
+							<td>@item.UnitPrice</td>
+							<td>@item.CurrentCount</td>
+							<td>@item.CreationDate</td>
+							<td>
+								<a Permission="@InventoryPermissions.EditInventory" class="btn btn-primary btn-sm" asp-page="EditInventory"
+								   asp-route-Id="@item.Id">ویرایش</a>
+
+								<a Permission="@InventoryPermissions.InCreaseInventory" class="btn btn-success btn-sm" asp-page-handler="Increase"
+								   asp-route-Id="@item.Id">افزایش موجودی</a>
+
+								<a Permission="@InventoryPermissions.ReduseInventory" class="btn btn-danger btn-sm" asp-page-handler="Reduce"
+								   asp-route-Id="@item.Id">کاهش موجودی</a>
+
+								<a Permission="@InventoryPermissions.ListProductInventory" class="btn btn-warning btn-sm" asp-page-handler="OperationLog"
+								   asp-route-Id="@item.Id">گردش انبار</a>
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+@section Scripts {
+	<script>
+		$(function (e) {
+			$('#example').DataTable();
+
+			var table = $('#example1').DataTable();
+			$('button').click(function () {
+				var data = table.$('input, select').serialize();
+				alert(
+					"The following data would have been submitted to the server: \n\n" +
+					data.substr(0, 120) + '...'
+				);
+				return false;
+			});
+			$('#example2').DataTable({
+				"scrollY": "200px",
+				"scrollCollapse": true,
+				"paging": false
+			});
+		});
+	</script>
+}

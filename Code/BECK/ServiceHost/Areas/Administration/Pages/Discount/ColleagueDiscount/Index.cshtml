@@ -1,0 +1,80 @@
+﻿@page
+@using DiscountManagement.Configuration.Permission
+@model ServiceHost.Areas.Administration.Pages.Discount.ColleagueDiscount.IndexModel
+@{
+    string apiUrl = Model.ApiPath;
+}
+<a Permission="@DiscountPermission.CreateColleagueDscount" class="btn btn-success" asp-page="CreateColleagueDiscount">ایجاد تخفیف همکاری جدید</a>
+<div class="card shadow">
+    <div class="card-header">
+        <h2 class="mb-0">لیست تخفیفات همکاران</h2>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="example"
+                   class="table table-striped table-bordered w-100 text-nowrap">
+                <thead>
+                    <tr>
+                        <th class="wd-15p">#</th>
+                        <th class="wd-15p">نام محصول</th>
+                        <th class="wd-20p">درصد تخفیف</th>
+                        <th class="wd-20p">تاریخ ایجاد</th>
+                        <th class="wd-20p">وضعیت</th>
+                        <th class="wd-20p">عملیات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ColleagueDiscounts)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.ProductName</td>
+                            <td>@item.DiscountRate%</td>
+                            <td>@item.CreationDate</td>
+                            <td id="commentState_@item.Id">
+                                @if (item.IsDeleted)
+                                {
+                                    <i class="fa fa-times fa-2x text-danger"></i>
+                                }
+                                else
+                                {
+                                    <i class="fa fa-check fa-2x text-success"></i>
+                                }
+                            </td>
+                            <td>
+                                <a Permission="@DiscountPermission.EditColleagueDiscount" class="btn btn-primary btn-sm" asp-page="EditColleagueDiscount"
+                                   asp-route-Id="@item.Id">ویرایش</a>
+
+                                <a Permission="@DiscountPermission.RestoreColleagueDiscount" class="btn btn-primary btn-sm" onclick="restoreDiscount('@item.Id','@apiUrl')">بازگردانی</a>
+
+                                <a Permission="@DiscountPermission.DeleteColleagueDiscount" class="btn btn-danger btn-sm" onclick="deleteDiscount('@item.Id','@apiUrl')">حذف</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script>
+        $(function (e) {
+            $('#example').DataTable();
+
+            var table = $('#example1').DataTable();
+            $('button').click(function () {
+                var data = table.$('input, select').serialize();
+                alert(
+                    "The following data would have been submitted to the server: \n\n" +
+                    data.substr(0, 120) + '...'
+                );
+                return false;
+            });
+            $('#example2').DataTable({
+                "scrollY": "200px",
+                "scrollCollapse": true,
+                "paging": false
+            });
+        });
+    </script>
+}

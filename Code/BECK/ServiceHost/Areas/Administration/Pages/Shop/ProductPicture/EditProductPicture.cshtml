@@ -1,0 +1,58 @@
+﻿@page
+@model ServiceHost.Areas.Administration.Pages.Shop.ProductPicture.EditProductPictureModel
+@{
+	string message = Model.Message;
+	ViewData["AdmintTitle"] = "ویرایش عکس محصول";
+}
+<div>
+	@if (!string.IsNullOrWhiteSpace(message))
+	{
+		<p class="bg-danger text-dark mx-auto text-center p-4">@message</p>
+	}
+</div>
+<form asp-action="post"
+	enctype="multipart/form-data">
+	<div class="card shadow">
+		<div class="card-header">
+			<h2 class="mb-0">ویرایش عکس محصول</h2>
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">عکس</label>
+						<input type="file" accept="image/*" class="form-control is-valid state-valid"
+							   asp-for="EditProductPicture.Picture">
+						<span class="text-danger" asp-validation-for="EditProductPicture.Picture"></span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">PictureAlt</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="EditProductPicture.PictureAlt">
+						<span class="text-danger" asp-validation-for="EditProductPicture.PictureAlt"></span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">PictureTitle</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="EditProductPicture.PictureTitle">
+						<span class="text-danger" asp-validation-for="EditProductPicture.PictureTitle"></span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">محصول</label>
+						<select class="form-control select2 w-100" asp-items="@Model.Products" asp-for="EditProductPicture.ProductId">
+						</select>
+						<span class="text-danger" asp-validation-for="EditProductPicture.ProductId"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<input type="hidden" asp-for="EditProductPicture.Id" value="@Model.EditProductPicture.Id" />
+	<input type="submit" class="btn btn-success" value="ویرایش" />
+</form>

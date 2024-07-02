@@ -1,0 +1,127 @@
+﻿@model List<_01_BECKQuery.Contract.Product.ProductQueryModel>
+<section class="top-sale-area mb--75 mb-md--55">
+    <div class="container">
+        <div class="row mb--35 mb-md--23">
+            <div class="col-12 text-center">
+                <h2>فروش برتر این هفته</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="element-carousel"
+                     data-slick-options='{
+                                "spaceBetween": 30,
+                                "slidesToShow": 3
+                            }'
+                     data-slick-responsive='[
+                                {"breakpoint": 768, "settings": {"slidesToShow": 2}},
+                                {"breakpoint": 480, "settings": {"slidesToShow": 1}}
+                            ]'>
+                    @foreach(var product in Model)
+                    {
+                        <div class="item">
+                            <div class="ft-product">
+                                <div class="product-inner">
+                                    <div class="product-image">
+                                        <figure class="product-image--holder">
+                                            <img src="~/Pictures/@product.Picture" alt="@product.PictureAlt" title="@product.PictureTitle">
+                                        </figure>
+                                        <a asp-page="Product" asp-route-slug="@product.Slug" class="product-overlay"></a>
+                                    </div>
+                                    <div class="product-info plr--20">
+                                        <h3 class="product-title"><a asp-page="Product" asp-route-slug="@product.Slug">@product.Name</a></h3>
+                                        <div class="product-info-bottom">
+                                            <div class="product-price-wrapper">
+                                                @if (product.HasDiscount)
+                                                {
+                                                    <span class="money text-muted" style="text-decoration-line: line-through; ">@product.UnitPrice تومان</span>
+                                                    <span class="money">@product.PriceWithDiscount تومان</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="money">@product.UnitPrice تومان</span>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+@*                     <div class="item">
+                        <div class="ft-product">
+                            <div class="product-inner">
+                                <div class="product-image">
+                                    <figure class="product-image--holder">
+                                        <img src="files/img/products/prod-02.jpg" alt="Product">
+                                    </figure>
+                                    <a href="product-details.html" class="product-overlay"></a>
+                                    <div class="product-action">
+                                        <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn">
+                                            <i class="la la-eye"></i>
+                                        </a>
+                                        <a href="wishlist.html" class="action-btn">
+                                            <i class="la la-heart-o"></i>
+                                        </a>
+                                        <a href="wishlist.html" class="action-btn">
+                                            <i class="la la-repeat"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="product-info plr--20">
+                                    <h3 class="product-title"><a href="product-details.html">صندلی نقطه ای طلایی.</a></h3>
+                                    <div class="product-info-bottom">
+                                        <div class="product-price-wrapper">
+                                            <span class="money">150 تومان</span>
+                                        </div>
+                                        <a href="cart.html" class="add-to-cart">
+                                            <i class="la la-plus"></i>
+                                            <span>افزودن به سبد خرید</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="ft-product">
+                            <div class="product-inner">
+                                <div class="product-image">
+                                    <figure class="product-image--holder">
+                                        <img src="files/img/products/prod-03.jpg" alt="Product">
+                                    </figure>
+                                    <a href="product-details.html" class="product-overlay"></a>
+                                    <div class="product-action">
+                                        <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn">
+                                            <i class="la la-eye"></i>
+                                        </a>
+                                        <a href="wishlist.html" class="action-btn">
+                                            <i class="la la-heart-o"></i>
+                                        </a>
+                                        <a href="wishlist.html" class="action-btn">
+                                            <i class="la la-repeat"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="product-info plr--20">
+                                    <h3 class="product-title"><a href="product-details.html">صندلی نقطه ای طلایی.</a></h3>
+                                    <div class="product-info-bottom">
+                                        <div class="product-price-wrapper">
+                                            <span class="money">150 تومان</span>
+                                        </div>
+                                        <a href="cart.html" class="add-to-cart">
+                                            <i class="la la-plus"></i>
+                                            <span>افزودن به سبد خرید</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> *@
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

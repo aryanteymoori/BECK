@@ -1,0 +1,46 @@
+﻿@model List<_01_BECKQuery.Contract.ProductCategory.ProductCategoryQueryModel>
+
+<section class="top-sale-area mb--75 mb-md--55">
+    <div class="container">
+        <div class="row mb--35 mb-md--23">
+            <div class="col-12 text-center">
+                <h2>دسته بندی محصولات</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="element-carousel" data-slick-options='{
+                        "spaceBetween": 30,
+                        "slidesToShow": 3
+                    }' data-slick-responsive='[
+                        {"breakpoint": 768, "settings": {"slidesToShow": 2}},
+                        {"breakpoint": 480, "settings": {"slidesToShow": 1}}
+                    ]'>
+
+                    @foreach (var item in Model)
+                    {
+                        <div class="item">
+                            <div class="ft-product">
+                                <div class="product-inner">
+                                    <div class="product-image">
+                                        <figure class="product-image--holder">
+                                            <img src="~/Pictures/@item.Picture" alt="@item.PictureAlt" title="@item.PictureTitle">
+                                        </figure>
+                                        <a asp-page="/ProductCategory" asp-route-slug="@item.Slug" class="product-overlay"></a>
+                                    </div>
+                                    <div class="product-info plr--20">
+                                        <h3 class="product-title">
+                                            <a asp-page="/ProductCategory" asp-route-slug="@item.Slug">
+                                                @item.Name
+                                            </a>
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,40 @@
+﻿@page
+@model ServiceHost.Areas.Administration.Pages.Inventory.ReduceInventoryModel
+@{
+    string message = Model.Message;
+}
+<div>
+    @if (!string.IsNullOrWhiteSpace(message))
+    {
+        <p class="bg-danger text-dark mx-auto text-center p-4">@message</p>
+    }
+</div>
+<form asp-action="post">
+    <div class="card shadow">
+        <div class="card-header">
+            <h2 class="mb-0">تعریف انبار جدید</h2>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label">تعداد</label>
+                        <input type="text" class="form-control is-valid state-valid"
+                               asp-for="ReduceInventory.Count">
+                        <span class="text-danger" asp-validation-for="ReduceInventory.Count"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label">توضیحات</label>
+                        <input type="text" class="form-control is-valid state-valid"
+                               asp-for="ReduceInventory.Description">
+                        <span class="text-danger" asp-validation-for="ReduceInventory.Description"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" asp-for="ReduceInventory.InventoryId" value="@Model.ReduceInventory.InventoryId" />
+    <input type="submit" class="btn btn-success" value="کاهش" />
+</form>

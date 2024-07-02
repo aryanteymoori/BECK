@@ -1,0 +1,85 @@
+﻿@page
+@using BlogManagement.Configuration.Permission
+@model ServiceHost.Areas.Administration.Pages.Blog.ArticleCategory.IndexModel
+@{
+    string apiUrl = Model.ApiPath;
+}
+<a Permission="@BlogPermission.CreateArticleCategory" class="btn btn-success" asp-page="CreateArticleCategory">ایجاد دسته جدید</a>
+<div class="card shadow">
+    <div class="card-header">
+        <h2 class="mb-0">لیست دسته بندی مقالات</h2>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="example"
+                   class="table table-striped table-bordered w-100 text-nowrap">
+                <thead>
+                    <tr>
+                        <th class="wd-15p">#</th>
+                        <th class="wd-15p">عکس</th>
+                        <th class="wd-20p">نام</th>
+                        <th class="wd-20p">ترتیب نمایش</th>
+                        <th class="wd-20p">تعداد مقالات</th>
+                        <th class="wd-20p">تاریخ ایجاد</th>
+                        <th class="wd-20p">وضعیت</th>
+                        <th class="wd-20p">عملیات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ArticleCategories)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td><img src="~/Pictures/@item.Picture" width="70" height="70" /></td>
+                            <td>@item.Name</td>
+                            <td>@item.ShowOrder</td>
+                            <td>@item.ArticlesCount</td>
+                            <td>@item.CreationDate</td>
+                            <td id="articleCategoryState_@item.Id">
+                                @if (item.IsDeleted)
+                                {
+                                    <i class="fa fa-times fa-2x text-danger"></i>
+
+                                }
+                                else
+                                {
+                                    <i class="fa fa-check fa-2x text-success"></i>
+                                }
+                            </td>
+                            <td>
+                                <a Permission="@BlogPermission.EditArticleCategory" class="btn btn-sm btn-primary" asp-page="EditArticleCategory"
+                                   asp-route-Id="@item.Id">ویرایش</a>
+
+                                <a Permission="@BlogPermission.RestoreArticleCategory" class="btn btn-sm btn-primary" onclick="restoreArticleCategory('@item.Id','@apiUrl')">بازگردانی</a>
+
+                                <a Permission="@BlogPermission.DeleteArticleCategory" class="btn btn-sm btn-danger" onclick="deletArticleCategory('@item.Id','@apiUrl')">حذف</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script>
+        $(function (e) {
+            $('#example').DataTable();
+
+            var table = $('#example1').DataTable();
+            $('button').click(function () {
+                var data = table.$('input, select').serialize();
+                alert(
+                    "The following data would have been submitted to the server: \n\n" +
+                    data.substr(0, 120) + '...'
+                );
+                return false;
+            });
+            $('#example2').DataTable({
+                "scrollY": "200px",
+                "scrollCollapse": true,
+                "paging": false
+            });
+        });
+    </script>
+}

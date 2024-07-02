@@ -1,0 +1,72 @@
+﻿@model _01_BECKQuery.Contract.Menu.MenuQueryModel
+@inject _0_Framework.Application.IAuthHelper authHelper
+
+<div class="offcanvas-menu-wrapper" id="offcanvasMenu">
+    <div class="offcanvas-menu-inner">
+        <a href="" class="btn-close">
+            <i class="la la-remove"></i>
+        </a>
+        <nav class="offcanvas-navigation">
+            <ul class="offcanvas-menu">
+                <li class="mainmenu__item menu-item-has-children">
+                    <a asp-page="Index" class="mainmenu__link">
+                        <span class="mm-text">صفحه اصلی</span>
+                    </a>
+                </li>
+                <li class="mainmenu__item menu-item-has-children">
+                    <a class="mainmenu__link">
+                        <span class="mm-text">فروشگاه</span>
+                    </a>
+                    <ul class="sub-menu">
+                        @foreach (var item in Model.ProductCategories)
+                        {
+                            <li>
+                                <a asp-page="ProductCategory" asp-route-slug="@item.Slug">
+                                    <span class="mm-text">@item.Name</span>
+                                </a>
+                            </li>
+                        }
+
+                    </ul>
+                </li>
+                <li class="mainmenu__item menu-item-has-children">
+                    <a class="mainmenu__link">
+                        <span class="mm-text">وبلاگ</span>
+                    </a>
+                    <ul class="sub-menu">
+                        @foreach (var item in Model.ArticleCategories)
+                        {
+                            <li>
+                                <a asp-page="ArticleCategory" asp-route-slug="@item.Slug">
+                                    <span class="mm-text">@item.Name</span>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </li>
+                <li class="mainmenu__item">
+                    @if (!authHelper.IsAuthenticated())
+                    {
+                        <a asp-page="Account" class="mainmenu__link">
+                            <span class="mm-text">ورود/ثبت نام</span>
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-page="Account" asp-page-handler="LogOut" class="mainmenu__link">
+                            <span class="mm-text">خروج</span>
+                        </a>
+                    }
+                </li>
+                @if (authHelper.GetPermissions().Count > 0)
+                {
+                    <li class="mainmenu__item">
+                        <a asp-area="Administration" asp-page="Index" class="mainmenu__link">
+                            <span class="mm-text">پنل ادمین</span>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    </div>
+</div>

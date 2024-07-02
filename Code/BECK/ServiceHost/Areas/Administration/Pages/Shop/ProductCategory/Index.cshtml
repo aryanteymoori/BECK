@@ -1,0 +1,68 @@
+﻿@page
+@using ShopManagement.Configuration.Permissions
+@model ServiceHost.Areas.Administration.Pages.Shop.ProductCategory.IndexModel
+@{
+	ViewData["AdmintTitle"] = "لیست دسته بندی محصولات";
+}
+<a class="btn btn-success" Permission="@ShopPermissions.CreateProductCategory" asp-page="CreateProductCategory">ایجاد دسته جدید</a>
+<div class="card shadow">
+	<div class="card-header">
+		<h2 class="mb-0">لیست دسته بندی محصولات</h2>
+	</div>
+	<div class="card-body">
+		<div class="table-responsive">
+			<table id="example"
+				   class="table table-striped table-bordered w-100 text-nowrap">
+				<thead>
+					<tr>
+						<th class="wd-15p">#</th>
+						<th class="wd-15p">نام</th>
+						<th class="wd-20p">عکس</th>
+						<th class="wd-20p">تاریخ ایجاد</th>
+						<th class="wd-20p">تعداد محصولات</th>
+						<th class="wd-20p">عملیات</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach(var item in Model.ProductCategories)
+					{
+						<tr>
+							<td>@item.Id</td>
+							<td>@item.Name</td>
+							<td><img src="~/Pictures/@item.Picture" width="70" height="70" /></td>
+							<td>@item.CreationDate</td>
+							<td>@item.ProductsCount</td>
+
+							<td>
+								<a Permission="@ShopPermissions.CreateProductCategory" class="btn btn-primary" asp-page="EditProductCategoryModel"
+								asp-route-Id="@item.Id">ویرایش</a>
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+@section Scripts{
+	<script>
+		$(function (e) {
+			$('#example').DataTable();
+
+			var table = $('#example1').DataTable();
+			$('button').click(function () {
+				var data = table.$('input, select').serialize();
+				alert(
+					"The following data would have been submitted to the server: \n\n" +
+					data.substr(0, 120) + '...'
+				);
+				return false;
+			});
+			$('#example2').DataTable({
+				"scrollY": "200px",
+				"scrollCollapse": true,
+				"paging": false
+			});
+		});
+	</script>
+}

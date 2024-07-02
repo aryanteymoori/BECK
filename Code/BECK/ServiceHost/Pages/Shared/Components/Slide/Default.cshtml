@@ -1,0 +1,55 @@
+﻿@model List< _01_BECKQuery.Contract.Slide.SlideQueryModel>
+
+<section class="homepage-slider mb--75 mb-md--55" style="direction: ltr">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="element-carousel slick-right-bottom" data-slick-options='{
+                        "slidesToShow": 1,
+                        "arrows": true,
+                        "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "la la-arrow-right" },
+                        "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "la la-arrow-left" }
+                    }' data-slick-responsive='[{"breakpoint": 768, "settings": {"arrows": false}}]'>
+                    @foreach(var slide in Model)
+                    {
+                        <div class="item">
+                            <div class="single-slide d-flex align-items-center bg-color"
+                                 data-bg-color="#dbf3f2">
+                                <div class="row align-items-center g-0 w-100" style="direction: rtl">
+                                    <div class="col-xl-6 col-md-6 mb-sm--50 order-md-2">
+                                        <figure data-animation="fadeInUp" data-duration=".3s" data-delay=".3s"
+                                                class="pl-15 pr--60">
+                                            <img src="~/Pictures/@slide.Picture"
+                                                 alt="@slide.PictureAlt" title="@slide.PictureTitle" class="mx-auto">
+                                        </figure>
+                                    </div>
+                                    <div class="col-md-5 col-lg-5 offset-md-1 order-md-1" style="  margin-right: 8.33333%;
+                                                         margin-left: inherit;">
+                                        <div class="slider-content">
+                                            <div class="slider-content__text border-color-2 mb--40 mb-md--30">
+                                                <p class="mb--15" data-animation="fadeInUp" data-duration=".3s"
+                                                   data-delay=".3s">@slide.Text</p>
+                                                <p class="mb--20" data-animation="fadeInUp" data-duration=".3s"
+                                                   data-delay=".3s">@slide.Title</p>
+                                                <h1 class="heading__primary lh-pt7" data-animation="fadeInUp"
+                                                    data-duration=".3s" data-delay=".3s">
+                                                    @slide.Heading
+                                                </h1>
+                                            </div>
+                                            <div class="slider-content__btn">
+                                                <a href="@slide.Link" class="btn btn-outline btn-brw-2 btn-brc-2"
+                                                   data-animation="fadeInUp" data-duration=".3s"
+                                                   data-delay=".6s">@slide.BtnText</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

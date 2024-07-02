@@ -1,0 +1,251 @@
+﻿@inject _0_Framework.Application.IAuthHelper authHelper
+
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    @if (ViewData["Title"] != null)
+    {
+        <title>@ViewData["Title"] - BECK</title>
+    }
+    else
+    {
+        <title>BECK</title>
+    }
+
+    @if (ViewData["Keywords"] != null)
+    {
+        <meta name="keywords" content="@ViewData["Keywords"]">
+    }
+    @if (ViewData["metaDescription"] != null)
+    {
+        <meta name="description" content="@ViewData["metaDescription"]">
+    }
+
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="~/Them/files/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="~/Them/files/img/icon.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/Them/files/css/bootstrap.css">
+    <link rel="stylesheet" href="~/Them/files/css/font-awesome.min.css">
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="~/Them/files/css/vendor.css">
+
+    <!-- style css -->
+    <link rel="stylesheet" href="~/Them/files/css/main.css">
+
+</head>
+
+<body>
+
+    <div class="ft-preloader active">
+        <div class="ft-preloader-inner h-100 d-flex align-items-center justify-content-center">
+            <div class="ft-child ft-bounce1"></div>
+            <div class="ft-child ft-bounce2"></div>
+            <div class="ft-child ft-bounce3"></div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__inner fixed-header">
+                <div class="header__main">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="header__main-inner">
+                                    <div class="header__main-left">
+                                        <div class="logo">
+                                            <a asp-page="Index" class="logo--normal">
+                                                <img src="~/Them/files/img/logo/logo.png" alt="Logo">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    @await Component.InvokeAsync("Menu")
+                                    <div class="header__main-right">
+                                        <div class="header-toolbar-wrap">
+                                            <div class="header-toolbar">
+                                                <div class="header-toolbar__item header-toolbar--search-btn">
+                                                    <a href="#searchForm" class="header-toolbar__btn toolbar-btn">
+                                                        <i class="la la-search"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="header-toolbar__item header-toolbar--minicart-btn">
+                                                    <a href="#miniCart" class="header-toolbar__btn toolbar-btn">
+                                                        <i class="la la-shopping-cart"></i>
+                                                        <span id="cart_items_count">0</span>
+                                                    </a>
+                                                </div>
+                                                <div class="header-toolbar__item d-block d-lg-none">
+                                                    <a href="#offcanvasMenu"
+                                                       class="header-toolbar__btn toolbar-btn menu-btn">
+                                                        <div class="hamburger-icon">
+                                                            <span></span>
+                                                            <span></span>
+                                                            <span></span>
+                                                            <span></span>
+                                                            <span></span>
+                                                            <span></span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        @RenderBody()
+
+        <footer class="footer bg-color" data-bg-color="#f4f8fa">
+            <div class="footer-top">
+                <div class="container-fluid">
+                    <div class="row border-bottom pt--70 pb--70">
+                        <div class="col-lg-3 col-sm-6 offset-md-1 offset-lg-0 mb-md--45">
+                            <div class="footer-widget">
+                                <div class="textwidget">
+                                    <figure class="footer-logo mb--30">
+                                        <img src="~/Them/files/img/logo/logo.png" alt="Logo">
+                                    </figure>
+                                    <p>
+                                        از سوی دیگر، ما با خشم عادلانه و بیزاری از مردانی که اینقدر فریب خورده و توسط
+                                        افسون ها تضعیف شده اند، محکوم می کنیم.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-sm-3 offset-lg-1 offset-sm-2 mb-md--45 offse ">
+                            <div class="footer-widget">
+                                <h3 class="widget-title mb--35 mb-sm--20">شرکت</h3>
+                                <div class="footer-widget">
+                                    <ul class="footer-menu">
+                                        <li><a href="#">درباره ما</a></li>
+                                        <li><a href="#">وبلاگ</a></li>
+                                        <li><a href="#">مشاغل</a></li>
+                                        <li><a href="#">تماس با ما</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-sm-4 offset-md-1 offset-lg-0 mb-xs--45">
+                            <div class="footer-widget">
+                                <h3 class="widget-title mb--35 mb-sm--20">محصول</h3>
+                                <div class="footer-widget">
+                                    <ul class="footer-menu">
+                                        <li><a href="#">قیمت گذاری</a></li>
+                                        <li><a href="#">امکانات</a></li>
+                                        <li><a href="#">مشتریان</a></li>
+                                        <li><a href="#">دمو</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-sm-4 mb-xs--45">
+                            <div class="footer-widget">
+                                <h3 class="widget-title mb--35 mb-sm--20">راهنمایی</h3>
+                                <div class="footer-widget">
+                                    <ul class="footer-menu">
+                                        <li><a href="#">معرفی</a></li>
+                                        <li><a href="#">بازخورد</a></li>
+                                        <li><a href="#">مراجعه</a></li>
+                                        <li><a href="#">وضعیت شبکه</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4">
+                            <div class="footer-widget">
+                                <h3 class="widget-title mb--35 mb-sm--20">شبکه اجتماعی</h3>
+                                <div class="footer-widget">
+                                    <ul class="footer-menu">
+                                        <li><a href="#">فیس بوک</a></li>
+                                        <li><a href="#">توییتر</a></li>
+                                        <li><a href="#">لینکدین</a></li>
+                                        <li><a href="#">گوگل +</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-middle ptb--40">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-11">
+                            <div class="footer-widget">
+                                <div class="taglist">
+                                    <span>برچسب ها:</span>
+                                    <a href="#">حداقل تجارت الکترونیک</a>
+                                    <a href="#">بازار یابی</a>
+                                    <a href="#">تجربه کاربری</a>
+                                    <a href="#">علی اکسپرس</a>
+                                    <a href="#">وب</a>
+                                    <a href="#">نمایشگاه دیجیتال</a>
+                                    <a href="#">جستجوی وب</a>
+                                    <a href="#">وابسته</a>
+                                    <a href="#">نمایشگاه</a>
+                                    <a href="#">حمایت کردن</a>
+                                    <a href="#">قالب</a>
+                                    <a href="#">بهترین کیفیت</a>
+                                    <a href="#">موبایل</a>
+                                    <a href="#">24 پشتیبانی</a>
+                                    <a href="#">علی اکسپرس</a>
+                                    <a href="#">وب</a>
+                                    <a href="#">لب تاب</a>
+                                    <a href="#">جستجوی وب</a>
+                                    <a href="#">وابسته</a>
+                                    <a href="#">فتوشاپ</a>
+                                    <a href="#">اسپورت</a>
+                                    <a href="#">قالب</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        @await Component.InvokeAsync("MoblieMenu")
+
+        @await Component.InvokeAsync("CartItems")
+
+        <div class="searchform__popup" id="searchForm">
+            <a href="#" class="btn-close"><i class="la la-remove"></i></a>
+            <div class="searchform__body">
+                <p>شروع به تایپ کنید و اینتر را برای جستجو فشار دهید</p>
+                <form class="searchform" method="get" asp-page="Search">
+                    <input type="text" name="value" id="value" class="searchform__input"
+                           placeholder="جستجو در کل فروشگاه...">
+                    <button type="submit" class="searchform__submit"><i class="la la-search"></i></button>
+                </form>
+            </div>
+        </div>
+        <div class="global-overlay"></div>
+        <a class="scroll-to-top" href=""><i class="la la-angle-double-up"></i></a>
+    </div>
+
+    <script src="~/Them/files/js/vendor-1.js"></script>
+    <script src="~/Them/files/js/main-1.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Them/Custom/jquery.cookie.js"></script>
+    <script src="~/Them/Custom/JsPresentation.js"></script>
+    <script>
+        $(document).ready(function () {
+            updateCart();
+        })
+    </script>
+</body>
+
+</html>

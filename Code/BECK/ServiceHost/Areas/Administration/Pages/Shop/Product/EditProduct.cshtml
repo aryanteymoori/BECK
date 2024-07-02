@@ -1,0 +1,115 @@
+﻿@page
+@model ServiceHost.Areas.Administration.Pages.Shop.Product.EditProductModel
+@{
+	string message = Model.Message;
+	ViewData["AdmintTitle"] = "ویرایش محصول";
+}
+<div>
+	@if (!string.IsNullOrWhiteSpace(message))
+	{
+		<p class="bg-danger text-dark mx-auto text-center p-4">@message</p>
+	}
+</div>
+<form asp-action="post"
+	enctype="multipart/form-data">
+	<div class="card shadow">
+		<div class="card-header">
+			<h2 class="mb-0">ویرایش محصول: @Model.EditProduct.Name</h2>
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">نام</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="EditProduct.Name">
+						<span class="text-danger" asp-validation-for="EditProduct.Name"></span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">کد</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="EditProduct.Code">
+						<span class="text-danger" asp-validation-for="EditProduct.Code"></span>
+					</div>
+				</div>
+				<div class="col-md-9">
+					<div class="form-group">
+						<label class="form-label">توضیح کوتاه</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="EditProduct.shortDescription">
+						<span class="text-danger" asp-validation-for="EditProduct.shortDescription"></span>
+					</div>
+				</div>
+
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="form-label">عکس</label>
+						<input type="file" accept="image/*" class="form-control is-valid state-valid"
+							   asp-for="EditProduct.Picture">
+						<span class="text-danger" asp-validation-for="EditProduct.Picture"></span>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="form-label">PictureAlt</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="EditProduct.PictureAlt">
+						<span class="text-danger" asp-validation-for="EditProduct.PictureAlt"></span>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="form-label">PictureTitle</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="EditProduct.PictureTitle">
+						<span class="text-danger" asp-validation-for="EditProduct.PictureTitle"></span>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="form-label">کلمات کلیدی</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="EditProduct.Keywords">
+						<span class="text-danger" asp-validation-for="EditProduct.Keywords"></span>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="form-label">Slug</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="EditProduct.Slug">
+						<span class="text-danger" asp-validation-for="EditProduct.Slug"></span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<div class="form-group">
+							<label class="form-label">دسته بندی</label>
+							<select class="form-control select2 w-100" asp-items="@Model.ProductCategories" asp-for="EditProduct.CategoryId">
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">توضیح متا</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="EditProduct.MetaDescription">
+						<span class="text-danger" asp-validation-for="EditProduct.MetaDescription"></span>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="form-group">
+						<label class="form-label">توضیحات</label>
+						<textarea class="form-control" asp-for="EditProduct.Description" rows="4"></textarea>
+						<span class="text-danger" asp-validation-for="EditProduct.Description"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<input type="hidden" asp-for="EditProduct.Id" value="@Model.EditProduct.Id" />
+	<input type="submit" class="btn btn-success" value="ویرایش" />
+</form>

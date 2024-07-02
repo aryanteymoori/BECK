@@ -1,0 +1,86 @@
+﻿@page
+@model ServiceHost.Areas.Administration.Pages.Blog.ArticleCategory.CreateArticleCategoryModel
+@{
+	string message = Model.Message;
+}
+<div>
+	@if (!string.IsNullOrWhiteSpace(message))
+	{
+		<p class="bg-danger text-dark mx-auto text-center p-4">@message</p>
+	}
+</div>
+<form asp-action="post"
+	  enctype="multipart/form-data">
+	<div class="card shadow">
+		<div class="card-header">
+			<h2 class="mb-0">افزودن دسته جدید</h2>
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">نام دسته بندی</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="CreateArticleCategory.Name">
+						<span class="text-danger" asp-validation-for="CreateArticleCategory.Name"></span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">Slug</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="CreateArticleCategory.Slug">
+						<span class="text-danger" asp-validation-for="CreateArticleCategory.Slug"></span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">عکس</label>
+						<input type="file" accept="image/*" class="form-control is-valid state-valid"
+							   asp-for="CreateArticleCategory.Picture">
+						<span class="text-danger" asp-validation-for="CreateArticleCategory.Picture"></span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">آدرس Canonical</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="CreateArticleCategory.CanonicalAddress">
+						@* <span class="text-danger" asp-validation-for="CreateArticleCategory.CanonicalAddress"></span> *@
+					</div>
+				</div>
+				<div class="col-md-5">
+					<div class="form-group">
+						<label class="form-label">توضیح متا</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="CreateArticleCategory.MetaDescription">
+						<span class="text-danger" asp-validation-for="CreateArticleCategory.MetaDescription"></span>
+					</div>
+				</div>
+				<div class="col-md-5">
+					<div class="form-group">
+						<label class="form-label">کلمات کلیدی</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="CreateArticleCategory.Keywords">
+						<span class="text-danger" asp-validation-for="CreateArticleCategory.Keywords"></span>
+					</div>
+				</div>
+				<div class="col-md-2">
+					<div class="form-group">
+						<label class="form-label">ترتیب نمایش</label>
+						<input type="number" value="0" class="form-control is-valid state-valid"
+							   asp-for="CreateArticleCategory.ShowOrder">
+						@* <span class="text-danger" asp-validation-for="CreateArticleCategory.ShowOrder"></span> *@
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="form-group">
+						<label class="form-label">توضیحات</label>
+						<textarea class="form-control" asp-for="CreateArticleCategory.Description" rows="4"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<input type="submit" class="btn btn-success" value="ایجاد" />
+</form>

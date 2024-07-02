@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6857b9df-9f7c-4535-8572-662a6d807382" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="ProjectId" id="2Xr2nNLladZPspAcEYLitALkfHt" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs-1\طرح سایت فروشگاه\فرستاده شده به rtl\beck\files\img" />
+      <recent name="C:\xampp\htdocs-1\طرح سایت فروشگاه\فرستاده شده به rtl\beck\files\img\beck\demo" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs-1\طرح سایت فروشگاه\فرستاده شده به rtl\beck" />
+      <recent name="C:\xampp\htdocs-1\طرح سایت فروشگاه\فرستاده شده به rtl\beck\files\fonts" />
+      <recent name="C:\xampp\htdocs-1\طرح سایت فروشگاه\فرستاده شده به rtl\beck\files\css\css" />
+      <recent name="C:\xampp\htdocs-1\طرح سایت فروشگاه\فرستاده شده به rtl\beck\files\css" />
+      <recent name="C:\xampp\htdocs-1\طرح سایت فروشگاه\فرستاده شده به rtl\beck\files\img" />
+    </key>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6857b9df-9f7c-4535-8572-662a6d807382" name="Default Changelist" comment="" />
+      <created>1699373043442</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1699373043442</updated>
+      <workItem from="1699373045550" duration="3104000" />
+      <workItem from="1699453669180" duration="12472000" />
+      <workItem from="1699534350234" duration="7689000" />
+      <workItem from="1699629320142" duration="22214000" />
+      <workItem from="1699690304027" duration="35697000" />
+      <workItem from="1699867109043" duration="9046000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2162" y="115" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1699700455438">
+      <screen x="1920" y="0" width="1024" height="728" />
+    </state>
+    <state x="2162" y="115" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.0.1024.728@1920.0.1024.728" timestamp="1699700455438" />
+    <state x="2212" y="123" key="FileChooserDialogImpl" timestamp="1699811743436">
+      <screen x="1920" y="0" width="1024" height="728" />
+    </state>
+    <state x="2212" y="123" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1024.728@1920.0.1024.728" timestamp="1699811743436" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1699724409677">
+      <screen x="1920" y="0" width="1024" height="728" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040/1920.0.1024.728@1920.0.1024.728" timestamp="1699724409677" />
+    <state x="2139" y="120" width="710" height="546" key="find.popup" timestamp="1699868874335">
+      <screen x="1920" y="0" width="1024" height="728" />
+    </state>
+    <state x="2139" y="120" width="710" height="546" key="find.popup/0.0.1920.1040/1920.0.1024.728@1920.0.1024.728" timestamp="1699868874335" />
+    <state x="2088" y="162" key="run.anything.popup" timestamp="1699723814091">
+      <screen x="1920" y="0" width="1024" height="728" />
+    </state>
+    <state x="2088" y="162" key="run.anything.popup/0.0.1920.1040/1920.0.1024.728@1920.0.1024.728" timestamp="1699723814091" />
+  </component>
+</project>

@@ -1,0 +1,91 @@
+﻿@page
+@model ServiceHost.Areas.Administration.Pages.Shop.Slide.CreateSlideModel
+@{
+	string message = Model.Message;
+	ViewData["AdmintTitle"] = "ایجاد عکس محصول";
+}
+<div>
+	@if (!string.IsNullOrWhiteSpace(message))
+	{
+		<p class="bg-danger text-dark mx-auto text-center p-4">@message</p>
+	}
+</div>
+<form asp-action="post"
+	enctype="multipart/form-data">
+	<div class="card shadow">
+		<div class="card-header">
+			<h2 class="mb-0">افزودن اسلایدر جدید</h2>
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">عکس</label>
+						<input type="file" accept="image/*" class="form-control is-valid state-valid"
+							   asp-for="CreateSlide.Picture">
+						<span class="text-danger" asp-validation-for="CreateSlide.Picture"></span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">سرتیتر</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="CreateSlide.Heading">
+						<span class="text-danger" asp-validation-for="CreateSlide.Heading"></span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">تیتر</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="CreateSlide.Title">
+						<span class="text-danger" asp-validation-for="CreateSlide.Title"></span>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="form-label">PictureAlt</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="CreateSlide.PictureAlt">
+						<span class="text-danger" asp-validation-for="CreateSlide.PictureAlt"></span>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="form-label">PictureTitle</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="CreateSlide.PictureTitle">
+						<span class="text-danger" asp-validation-for="CreateSlide.PictureTitle"></span>
+					</div>
+				</div>
+				
+				
+				<div class="col-md-9">
+					<div class="form-group">
+						<label class="form-label">متن</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="CreateSlide.Text">
+						<span class="text-danger" asp-validation-for="CreateSlide.Text"></span>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="form-label">متن دکمه</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="CreateSlide.BtnText">
+						<span class="text-danger" asp-validation-for="CreateSlide.BtnText"></span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">لینک</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="CreateSlide.Link">
+						<span class="text-danger" asp-validation-for="CreateSlide.Link"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<input type="submit" class="btn btn-success" value="ایجاد" />
+</form>

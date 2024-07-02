@@ -1,0 +1,67 @@
+﻿@page
+@model ServiceHost.Areas.Administration.Pages.Discount.ColleagueDiscount.EditColleagueDiscountModel
+@{
+    string message = Model.Message;
+}
+<div>
+    @if (!string.IsNullOrWhiteSpace(message))
+    {
+        <p class="bg-danger text-dark mx-auto text-center p-4">@message</p>
+    }
+</div>
+<form asp-action="post">
+    <div class="card shadow">
+        <div class="card-header">
+            <h2 class="mb-0">تعریف تخفیف همکاری جدید</h2>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label">محصول</label>
+                        <select class="form-control select2 w-100" asp-items="@Model.Products" asp-for="EditColleagueDiscount.ProductId">
+                        </select>
+                        <span class="text-danger" asp-validation-for="EditColleagueDiscount.ProductId"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label">درصد تخفیف</label>
+                        <input type="text" class="form-control is-valid state-valid"
+                               asp-for="EditColleagueDiscount.DiscountRate">
+                        <span class="text-danger" asp-validation-for="EditColleagueDiscount.DiscountRate"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" asp-for="EditColleagueDiscount.Id" value="@Model.EditColleagueDiscount.Id" />
+    <input type="submit" class="btn btn-success" value="ایجاد" />
+</form>
+
+
+@section styles {
+    <link rel="stylesheet" href="~/assets/css/persian-datepicker-0.4.5.min.css">
+}
+@section Scripts {
+    <script src="~/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="~/assets/js/persian-date-0.1.8.min.js"></script>
+    <script src="~/assets/js/persian-datepicker-0.4.5.min.js"></script>
+    <script>
+        // $('.datepicker').persianDatepicker({
+        //     'format': 'YYYY/MM/DD',
+        //     'autoclose': true,
+        //     showOtherMonths: true,
+        //     selectOtherMonths: true
+        // });
+        $("#tarikh").persianDatepicker({
+            altField: "#tarikhAlt",
+            altFormat: "X",
+            format: "D MMMM YYYY HH:mm a",
+            observer: true,
+            timePicker: {
+                enabled: true
+            }
+        });
+    </script>
+}

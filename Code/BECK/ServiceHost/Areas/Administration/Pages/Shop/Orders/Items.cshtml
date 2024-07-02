@@ -1,0 +1,39 @@
+﻿@page
+@using _0_Framework.Application;
+@model ServiceHost.Areas.Administration.Pages.Shop.Orders.ItemsModel
+@{
+}
+<a class="btn btn-danger" asp-page="Index">بازگشت</a>
+<div class="card shadow">
+	<div class="card-header">
+		<h2 class="mb-0">آیتم ها</h2>
+	</div>
+	<div class="card-body">
+		<div class="table-responsive">
+			<table id="example"
+				   class="table table-striped table-bordered w-100 text-nowrap">
+				<thead>
+					<tr>
+						<th class="wd-15p">#</th>
+						<th class="wd-15p">محصول</th>
+						<th class="wd-15p">تعداد</th>
+						<th class="wd-20p">قیمت واحد</th>
+						<th class="wd-20p">درصد تخفیف</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var item in Model.OrderItems)
+					{
+						<tr>
+							<td>@item.Id</td>
+							<td>@item.ProductName</td>
+							<td>@item.Count</td>
+							<td>@item.UnitPrice.ToMoney()</td>
+							<td>% @item.DiscountRate</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

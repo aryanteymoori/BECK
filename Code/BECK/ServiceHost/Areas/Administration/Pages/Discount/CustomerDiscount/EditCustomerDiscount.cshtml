@@ -1,0 +1,107 @@
+﻿@page
+@model ServiceHost.Areas.Administration.Pages.Discount.CustomerDiscount.EditCustomerDiscountModel
+@{
+    string message = Model.Message;
+}
+<div>
+    @if (!string.IsNullOrWhiteSpace(message))
+    {
+        <p class="bg-danger text-dark mx-auto text-center p-4">@message</p>
+    }
+</div>
+<form asp-action="post">
+    <div class="card shadow">
+        <div class="card-header">
+            <h2 class="mb-0">ویرایش تخفیف مشتری</h2>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label">محصول</label>
+                        <select class="form-control select2 w-100" asp-items="@Model.Products" asp-for="EditCustomerDiscount.ProductId">
+                        </select>
+                        <span class="text-danger" asp-validation-for="EditCustomerDiscount.ProductId"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label">درصد تخفیف</label>
+                        <input type="text" class="form-control is-valid state-valid"
+                               asp-for="EditCustomerDiscount.DiscountRate">
+                        <span class="text-danger" asp-validation-for="EditCustomerDiscount.DiscountRate"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label">تاریخ شروع</label>
+                        <div class="wd-200 mg-b-30">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fa fa-calendar tx-16 lh-0 op-6"></i>
+                                    </div>
+                                </div><input class="form-control datepicker" asp-for="EditCustomerDiscount.StartDate"
+                                             placeholder="YYYY/DD/MM" type="text">
+                                <span class="text-danger" asp-validation-for="EditCustomerDiscount.StartDate"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label">تاریخ پایان</label>
+                        <div class="wd-200 mg-b-30">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fa fa-calendar tx-16 lh-0 op-6"></i>
+                                    </div>
+                                </div><input class="form-control datepicker" asp-for="EditCustomerDiscount.EndDate"
+                                             placeholder="YYYY/DD/MM" type="text">
+                                <span class="text-danger" asp-validation-for="EditCustomerDiscount.EndDate"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label">علت تخفیف</label>
+                        <input type="text" class="form-control is-valid state-valid"
+                               asp-for="EditCustomerDiscount.Reason">
+                        <span class="text-danger" asp-validation-for="EditCustomerDiscount.Reason"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" asp-for="EditCustomerDiscount.Id" value="@Model.EditCustomerDiscount.Id" />
+    <input type="submit" class="btn btn-success" value="ویرایش" />
+</form>
+
+
+@section styles {
+    <link rel="stylesheet" href="~/assets/css/persian-datepicker-0.4.5.min.css">
+}
+@section Scripts {
+    <script src="~/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="~/assets/js/persian-date-0.1.8.min.js"></script>
+    <script src="~/assets/js/persian-datepicker-0.4.5.min.js"></script>
+    <script>
+        // $('.datepicker').persianDatepicker({
+        //     'format': 'YYYY/MM/DD',
+        //     'autoclose': true,
+        //     showOtherMonths: true,
+        //     selectOtherMonths: true
+        // });
+        $("#tarikh").persianDatepicker({
+            altField: "#tarikhAlt",
+            altFormat: "X",
+            format: "D MMMM YYYY HH:mm a",
+            observer: true,
+            timePicker: {
+                enabled: true
+            }
+        });
+    </script>
+}

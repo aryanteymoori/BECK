@@ -1,0 +1,40 @@
+﻿@page
+@model ServiceHost.Areas.Administration.Pages.Inventory.EditInventoryModel
+@{
+    string message = Model.Message;
+}
+<div>
+    @if (!string.IsNullOrWhiteSpace(message))
+    {
+        <p class="bg-danger text-dark mx-auto text-center p-4">@message</p>
+    }
+</div>
+<form asp-action="post">
+    <div class="card shadow">
+        <div class="card-header">
+            <h2 class="mb-0">ویرایش انبار</h2>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label">محصول</label>
+                        <select class="form-control select2 w-100" asp-items="@Model.Products" asp-for="EditInventory.ProductId">
+                        </select>
+                        <span class="text-danger" asp-validation-for="EditInventory.ProductId"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label">قیمت واحد</label>
+                        <input type="text" class="form-control is-valid state-valid"
+                               asp-for="EditInventory.UnitPrice">
+                        <span class="text-danger" asp-validation-for="EditInventory.UnitPrice"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" asp-for="EditInventory.Id" value="@Model.EditInventory.Id" />
+    <input type="submit" class="btn btn-success" value="ویرایش" />
+</form>

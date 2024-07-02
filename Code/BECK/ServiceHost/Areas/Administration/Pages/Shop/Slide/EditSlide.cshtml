@@ -1,0 +1,92 @@
+﻿@page
+@model ServiceHost.Areas.Administration.Pages.Shop.Slide.EditSlideModel
+@{
+	string message = Model.Message;
+	ViewData["AdmintTitle"] = "ویرایش اسلایدر";
+}
+<div>
+	@if (!string.IsNullOrWhiteSpace(message))
+	{
+		<p class="bg-danger text-dark mx-auto text-center p-4">@message</p>
+	}
+</div>
+<form asp-action="post"
+	enctype="multipart/form-data">
+	<div class="card shadow">
+		<div class="card-header">
+			<h2 class="mb-0">ویرایش اسلایدر</h2>
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">عکس</label>
+						<input type="file" accept="image/*" class="form-control is-valid state-valid"
+							   asp-for="EditSlide.Picture">
+						<span class="text-danger" asp-validation-for="EditSlide.Picture"></span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">سرتیتر</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="EditSlide.Heading">
+						<span class="text-danger" asp-validation-for="EditSlide.Heading"></span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">تیتر</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="EditSlide.Title">
+						<span class="text-danger" asp-validation-for="EditSlide.Title"></span>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="form-label">PictureAlt</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="EditSlide.PictureAlt">
+						<span class="text-danger" asp-validation-for="EditSlide.PictureAlt"></span>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="form-label">PictureTitle</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="EditSlide.PictureTitle">
+						<span class="text-danger" asp-validation-for="EditSlide.PictureTitle"></span>
+					</div>
+				</div>
+
+
+				<div class="col-md-9">
+					<div class="form-group">
+						<label class="form-label">متن</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="EditSlide.Text">
+						<span class="text-danger" asp-validation-for="EditSlide.Text"></span>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="form-label">متن دکمه</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="EditSlide.BtnText">
+						<span class="text-danger" asp-validation-for="EditSlide.BtnText"></span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">لینک</label>
+						<input type="text" class="form-control is-valid state-valid"
+							   asp-for="EditSlide.Link">
+						<span class="text-danger" asp-validation-for="EditSlide.Link"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<input type="hidden" asp-for="EditSlide.Id" value="@Model.EditSlide.Id" />
+	<input type="submit" class="btn btn-success" value="ویرایش" />
+</form>
