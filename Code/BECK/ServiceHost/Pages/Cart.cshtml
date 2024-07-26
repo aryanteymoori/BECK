@@ -3,6 +3,7 @@
 @model ServiceHost.Pages.CartModel
 @{
     string message = Model.Message;
+    string apiUrl = Model.ApiUrl;
 }
 <section class="page-title-area bg-image ptb--80" data-bg-image="Them/files/img/bg/page_title_bg.jpg">
     <div class="container">
@@ -71,7 +72,7 @@
                                                         </td>
                                                         <td class="product-quantity">
                                                             <div class="quantity">
-                                                                <input type="number" class="quantity-input" name="qty" id="qty-1" value="@item.Count" min="1" onchange="changeCartItemCount('@item.Id','totalItemPrice-@item.Id',this.value)">
+                                                                <input type="number" class="quantity-input" name="qty" id="qty-1" value="@item.Count" min="1" onchange="changeCartItemCount('@item.Id','totalItemPrice-@item.Id',this.value,'@apiUrl')">
                                                             </div>
                                                         </td>
                                                         <td class="product-total-price">

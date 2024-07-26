@@ -13,13 +13,17 @@ namespace ServiceHost.Pages
     {
         public string Message { get; set; }
         public string CookieName = "cart-items";
+        public string ApiUrl { get; set; }
         public List<CartItem> CartItems;
         private readonly IProductQuery _productQuery;
+        private readonly IConfiguration _configuration;
 
-        public CartModel(IProductQuery productQuery)
+        public CartModel(IProductQuery productQuery, IConfiguration configuration)
         {
             CartItems = new List<CartItem>();
             _productQuery = productQuery;
+            _configuration = configuration;
+            ApiUrl = _configuration.GetSection("WebInfo")["UrlOFApi"];
         }
 
         public void OnGet(string message)

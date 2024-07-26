@@ -65,7 +65,7 @@ function removeFromCart(id) {
     updateCart();
 }
 
-function changeCartItemCount(id, totalId, count) {
+function changeCartItemCount(id, totalId, count,path) {
     var products = $.cookie(cookieName);
 
     products = JSON.parse(products);
@@ -85,7 +85,7 @@ function changeCartItemCount(id, totalId, count) {
     updateCart();
     //location.reload();
     var settings = {
-        "url": "https://fileneed.ir/api/Inventory/",
+        "url": `https://${path}/api/Inventory/`,
         "method": "POST",
         "timeout": 0,
         "headers": {
